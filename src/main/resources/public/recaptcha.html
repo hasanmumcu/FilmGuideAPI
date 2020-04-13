@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body style="background-color: rgba(0, 0, 255, 0);">
+    <form action="?" method="POST">
+      <div style="position: absolute; bottom: 0px;"class="g-recaptcha" data-sitekey="6Leyv-gUAAAAAGRxP_bIu-wLKhpPBzjw6Hr28115"></div>
+    </form>
+    <script>
+  
+    function initListener() {
+      // set a global to tell that we are listening
+      window.recaptchaCloseListener = true
+      // find the open reCaptcha window
+      var frames = Array.from(document.getElementsByTagName('iframe'));
+      var recaptchaWindow;
+
+      frames.forEach(function(x){
+
+          if (x.src.includes('google.com/recaptcha/api2/bframe') ){
+              recaptchaWindow = x.parentNode.parentNode;
+          };
+
+      });
+
+      const callback = async function(){
+        if(recaptchaWindow !== null && recaptchaWindow !== undefined){
+          if(recaptchaWindow.style.visibility === "hidden"){
+            await new Promise(r => setTimeout(r, 470));
+          }
+          
+          javaApp.setStatus(recaptchaWindow.style.visibility);
+        }
+      }
+      
+      if(recaptchaWindow !== null && recaptchaWindow !== undefined){
+        window.observer = new MutationObserver(callback);
+        window.observer.observe(recaptchaWindow, { attributes: true, attributeFilter: ['style'] })
+      }
+     }
+    </script>
+  </body>
+</html>
