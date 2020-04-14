@@ -1,6 +1,5 @@
 package com.filmguide.controller.Authentication;
 
-import com.filmguide.model.Comment;
 import com.filmguide.model.User;
 import com.filmguide.repository.CommentRepository;
 import com.filmguide.repository.UserRepository;
@@ -33,9 +32,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -142,20 +138,8 @@ public class AuthenticationController {
             User user = User.builder().username(username).password(passwordEncoder.encode(password)).email(email)
                     .roles(Arrays.asList("ROLE_USER")).build();
 
-            /*
-             * Comment comment =
-             * Comment.builder().body("test").user(user).movieId("22").build(); Comment
-             * comment2 =
-             * Comment.builder().body("asdadsa").user(user).movieId("22").build();
-             */this.users.save(user);/*
-                                      * this.comments.save(comment); this.comments.save(comment2);
-                                      */
-
-            try {
-                Thread.sleep(2000); // SILMEYI UNUTMA TEST ICIN
-            } catch (Exception e) {
-            }
-            
+            this.users.save(user);
+         
             model.put("message", "Registration successful!");
             model.put("success", true);
 
