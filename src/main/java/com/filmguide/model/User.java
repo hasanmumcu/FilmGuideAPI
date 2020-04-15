@@ -30,7 +30,7 @@ import static java.util.stream.Collectors.toList;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements UserDetails {
+public class User implements IUser {
     
     private static final long serialVersionUID = -2556816327320302621L;
 

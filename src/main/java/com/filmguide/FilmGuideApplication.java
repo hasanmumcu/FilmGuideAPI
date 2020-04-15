@@ -16,10 +16,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
 
 @SpringBootApplication
-public class DemoApplication {
+public class FilmGuideApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(FilmGuideApplication.class, args);
     }
 
     @Bean
